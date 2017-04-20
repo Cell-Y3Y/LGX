@@ -15,6 +15,9 @@ class CreateMenuclassesTable extends Migration
     {
         Schema::create('menuclasses', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->unsignedInteger('channel_id');
+            $table->foreign('channel_id')->references('id')->on('channels');
             $table->timestamps();
         });
     }

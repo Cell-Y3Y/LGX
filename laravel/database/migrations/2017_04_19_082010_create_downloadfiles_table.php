@@ -15,6 +15,11 @@ class CreateDownloadfilesTable extends Migration
     {
         Schema::create('downloadfiles', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title');
+            $table->unsignedInteger('article_id');
+            $table->foreign('article_id')->references('id')->on('articles');
+            $table->string('fileurl');
+            $table->integer('hit')->nullable()->default(0);
             $table->timestamps();
         });
     }

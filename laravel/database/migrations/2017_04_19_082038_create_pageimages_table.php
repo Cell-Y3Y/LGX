@@ -15,6 +15,11 @@ class CreatePageimagesTable extends Migration
     {
         Schema::create('pageimages', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title');
+            $table->unsignedInteger('menuclass_id');
+            $table->foreign('menuclass_id')->references('id')->on('menuclasses');
+            $table->text('summary')->nullable();
+            $table->string('imgurl');
             $table->timestamps();
         });
     }
