@@ -17,4 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::group(['middleware' => 'auth'], function () {
+//需要登录访问的路由
+});
+
+//Route::get('/home', 'HomeController@index');
+
+
